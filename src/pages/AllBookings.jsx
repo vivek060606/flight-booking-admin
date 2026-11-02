@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import Sidebar from "../components/Sidebar";
 import api from "../services/api";
 import { Search, RefreshCw } from "lucide-react";
+import BookingDetails from "../components/BookingDetails";
 
 export default function AllBookings() {
+  const [selectedBooking, setSelectedBooking] = useState(null);
   const [bookings, setBookings] = useState([]);
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
@@ -117,7 +119,15 @@ export default function AllBookings() {
                 </tr>
               ) : (
                 bookings.map((booking) => (
-                  <tr key={booking._id} className="hover:bg-slate-800/50">
+                 <tr
+  key={booking._id}
+ onClick={() => {
+  alert("Booking clicked: " + booking.pnr);
+  setSelectedBooking(booking);
+}}
+  className="cursor-pointer hover:bg-slate-800/70"
+  title="Click to view booking details"
+>
                     <td className="p-4 font-semibold text-white">
                       {booking.pnr}
                     </td>
@@ -171,6 +181,13 @@ export default function AllBookings() {
             </button>
           </div>
         </div>
+           {selectedBooking && (
+        <BookingDetails
+          booking={selectedBooking}
+          onClose={() => setSelectedBooking(null)}
+        />
+      )}
+
       </main>
     </div>
   );

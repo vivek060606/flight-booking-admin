@@ -4,6 +4,7 @@ import Reconciliation from "./pages/Reconciliation";
 import Login from "./pages/Login";
 import AllBookings from "./pages/AllBookings";
 import PaymentHistory from "./pages/PaymentHistory";
+import FlightManagement from "./pages/FlightManagement";
 
 function ProtectedRoute({ children }) {
   const token = localStorage.getItem("adminToken");
@@ -47,6 +48,14 @@ function App() {
   element={
     <ProtectedRoute>
       <PaymentHistory />
+    </ProtectedRoute>
+  }
+/>
+<Route
+  path="/flights"
+  element={
+    <ProtectedRoute>
+      <FlightManagement />
     </ProtectedRoute>
   }
 />

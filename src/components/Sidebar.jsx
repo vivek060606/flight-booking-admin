@@ -2,6 +2,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { LayoutDashboard, CreditCard, LogOut, Plane } from "lucide-react";
 import { ClipboardList } from "lucide-react";
 import { ReceiptText } from "lucide-react";
+import { PlaneTakeoff } from "lucide-react";
 
 export default function Sidebar() {
   const navigate = useNavigate();
@@ -51,7 +52,11 @@ export default function Sidebar() {
   <ReceiptText size={19} />
   Payment History
 </NavLink>
-      </nav>
+<NavLink to="/flights" className={linkClass}>
+  <PlaneTakeoff size={19} />
+  Flight Management
+</NavLink>
+      </nav>NavLink
 
       <div className="mt-auto">
         <button
